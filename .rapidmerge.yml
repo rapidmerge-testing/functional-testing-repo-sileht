@@ -1,0 +1,10 @@
+
+
+pull_request_rules: 
+  - name: "hello"
+    conditions: 
+    - base=main
+    - label=auto-merge
+    actions:
+      comment:
+        message: "Hello!"
