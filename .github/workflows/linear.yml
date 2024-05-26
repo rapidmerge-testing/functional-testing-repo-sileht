@@ -1,0 +1,26 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Linear automation
+
+on:
+  pull_request:
+    branches: [ "main" ]
+    types: [ "opened", "synchronize", "reopened", "edited" ]
+
+
+permissions: write-all
+
+jobs:
+  add-linear-author-as-reviewer:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Runs a set of commands using the runners shell
+      - name: Add reviewers
+        uses: khulnasoft/add-linear-author-as-reviewer@main
+        with:
+           GITHUB_TOKEN: ${{ secrets.PAT_TEST }}
+           LINEAR_API_KEY: ${{ secrets.LINEAR_API_KEY }}
+           EMAIL_MAPPING: |
+             sileht@khulnasoft.com sileht
+             info@khulnasoft.com nxpkg
